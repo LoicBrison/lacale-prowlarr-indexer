@@ -20,7 +20,8 @@
   <a href="#-équipements-du-navire">Équipements</a> •
   <a href="#-cargaison">Cargaison</a> •
   <a href="#-ordres-du-capitaine">Configuration</a> •
-  <a href="#-en-cas-de-tempête">Troubleshooting</a>
+  <a href="#-en-cas-de-tempête">Troubleshooting</a> •
+  <a href="#-documentation">Documentation</a>
 </p>
 
 ---
@@ -204,6 +205,29 @@ Tout marin volontaire est le bienvenu ! Vous pouvez :
 - 🐛 [Signaler une avarie](../../issues)
 - 💡 [Proposer des améliorations](../../issues)
 - 🔧 [Soumettre des réparations](../../pulls)
+- 📖 [Lire le guide du contributeur](CONTRIBUTING.md)
+- 🛠️ [Consulter la doc technique](DEVELOPER.md)
+
+---
+
+## 📚 Documentation
+
+| Document | Description |
+|:---------|:------------|
+| 📖 [CONTRIBUTING.md](CONTRIBUTING.md) | Guide pour rejoindre l'équipage |
+| 🛠️ [DEVELOPER.md](DEVELOPER.md) | Documentation technique |
+| 🚀 [API_IMPROVEMENTS.md](API_IMPROVEMENTS.md) | Suggestions d'améliorations pour l'API |
+
+---
+
+## 💰 Soutenir le Capitaine
+
+Si ce navire vous a aidé dans vos aventures, vous pouvez soutenir le capitaine :
+
+<p align="center">
+  <a href="https://github.com/sponsors/JigSawFr"><img src="https://img.shields.io/badge/GitHub_Sponsors-💜-ea4aaa?style=for-the-badge" alt="GitHub Sponsors"/></a>
+  <a href="https://ko-fi.com/jigsawfr"><img src="https://img.shields.io/badge/Ko--fi-☕-ff5e5b?style=for-the-badge" alt="Ko-fi"/></a>
+</p>
 
 ---
 
