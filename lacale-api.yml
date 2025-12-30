@@ -1,0 +1,110 @@
+---
+id: lacale-api
+name: La Cale (API)
+description: "La Cale is a French Private Tracker for Movies, TV, Music, Games, Software, Ebooks and XXX"
+language: fr-FR
+type: private
+encoding: UTF-8
+
+links:
+  - https://la-cale.space/
+
+caps:
+  categorymappings:
+    # Ebooks
+    - {id: "BD", cat: Books/Comics, desc: "BD"}
+    - {id: "Romans", cat: Books/EBook, desc: "Romans"}
+    - {id: "Documentaires", cat: Books/Technical, desc: "Documentaires"}
+    # Movies
+    - {id: "Films HD", cat: Movies/HD, desc: "Films HD"}
+    - {id: "Animation", cat: Movies/Other, desc: "Animation"}
+    - {id: "Films 4K", cat: Movies/UHD, desc: "Films 4K"}
+    # Games
+    - {id: "PC", cat: PC/Games, desc: "PC"}
+    - {id: "Consoles", cat: Console, desc: "Consoles"}
+    # Software
+    - {id: "Linux", cat: PC/ISO, desc: "Linux"}
+    - {id: "Mac", cat: PC/Mac, desc: "Mac"}
+    - {id: "Windows", cat: PC/0day, desc: "Windows"}
+    # Music
+    - {id: "FLAC", cat: Audio/Lossless, desc: "FLAC"}
+    - {id: "MP3", cat: Audio/MP3, desc: "MP3"}
+    # TV
+    - {id: "Séries HD", cat: TV/HD, desc: "Séries HD"}
+    - {id: "Séries VOSTFR", cat: TV/Foreign, desc: "Séries VOSTFR"}
+    # XXX
+    - {id: "XXX", cat: XXX, desc: "XXX"}
+
+  modes:
+    search: [q]
+    tv-search: [q]
+    movie-search: [q]
+    music-search: [q]
+    book-search: [q]
+
+settings:
+  - name: passkey
+    type: text
+    label: Passkey
+  - name: info_passkey
+    type: info
+    label: About your Passkey
+    default: "Your passkey can be found in your profile on la-cale.space."
+
+login:
+  path: api/external
+  method: get
+  inputs:
+    passkey: "{{ .Config.passkey }}"
+    q: test
+  test:
+    path: api/external
+    inputs:
+      passkey: "{{ .Config.passkey }}"
+      q: rambo
+
+search:
+  paths:
+    - path: api/external
+      response:
+        type: json
+
+  inputs:
+    passkey: "{{ .Config.passkey }}"
+    q: "{{ .Keywords }}"
+    cat: "{{ join .Categories \",\" }}"
+
+  rows:
+    selector: $
+
+  fields:
+    title:
+      selector: title
+    category:
+      selector: category
+    details:
+      text: /
+    download:
+      selector: link
+    infohash:
+      selector: infoHash
+    size:
+      selector: size
+    date:
+      selector: pubDate
+      filters:
+        - name: dateparse
+          args: "2006-01-02T15:04:05.999999999Z07:00"
+    seeders:
+      selector: seeders
+    leechers:
+      selector: leechers
+    downloadvolumefactor:
+      text: 1
+    uploadvolumefactor:
+      text: 1
+    minimumratio:
+      text: 1.0
+    minimumseedtime:
+      # 48 hours in seconds
+      text: 172800

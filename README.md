@@ -1,0 +1,230 @@
+<p align="center">
+  <img src="https://img.shields.io/badge/Prowlarr-Indexer-blueviolet?style=for-the-badge&logo=prowlarr" alt="Prowlarr Indexer"/>
+  <img src="https://img.shields.io/badge/Version-BETA-orange?style=for-the-badge" alt="Beta Version"/>
+  <img src="https://img.shields.io/badge/Pavillon-Fran%C3%A7ais-blue?style=for-the-badge" alt="French"/>
+</p>
+
+<h1 align="center">🏴‍☠️ La Cale - Prowlarr Indexer</h1>
+
+<p align="center">
+  <img src="https://readme-typing-svg.demolab.com?font=Pirata+One&size=24&pause=1000&color=D4AF37&center=true&vCenter=true&width=500&lines=Bienvenue+%C3%A0+bord%2C+moussaillon+!;Hissez+les+torrents+!;Le+butin+vous+attend..." alt="Typing SVG" />
+</p>
+
+<p align="center">
+  <strong>Indexeur Prowlarr pour <a href="https://la-cale.space/">La Cale</a></strong><br>
+  <em>🚢 Un navire français chargé de Films, Séries, Musique, Jeux, Logiciels, Ebooks & XXX</em>
+</p>
+
+<p align="center">
+  <a href="#-embarquement">Embarquement</a> •
+  <a href="#-équipements-du-navire">Équipements</a> •
+  <a href="#-cargaison">Cargaison</a> •
+  <a href="#-ordres-du-capitaine">Configuration</a> •
+  <a href="#-en-cas-de-tempête">Troubleshooting</a>
+</p>
+
+---
+
+> [!WARNING]
+> **⚓ VERSION BETA** — Ce navire est encore en construction dans le chantier naval. Signalez toute voie d'eau en [ouvrant un ticket](../../issues) !
+
+---
+
+## ✨ Équipements du navire
+
+```
+    _~^~^~_
+\) /  o o  \ (/
+  '_   ⏣   _'
+  \ '-----' /
+```
+
+| Équipement | État |
+|:-----------|:----:|
+| 🔌 API directe (pas de scraping) | ⚓ |
+| 🔑 Authentification par passkey | ⚓ |
+| 🏷️ Filtrage par cargaison | ⚓ |
+| 📦 Décodage JSON | ⚓ |
+| 🔍 Recherche multi-modes | ⚓ |
+
+---
+
+## ⚓ Embarquement
+
+### Étape 1 — Charger les cartes de navigation
+
+Copiez `lacale-api.yml` dans la cale de Prowlarr :
+
+| Plateforme | Destination |
+|:-----------|:------------|
+| 🐧 Linux | `~/.config/Prowlarr/Definitions/Custom/` |
+| 🪟 Windows | `%AppData%\Prowlarr\Definitions\Custom\` |
+| 🐳 Docker | `/config/Definitions/Custom/` |
+
+### Étape 2 — Relancer le navire
+
+```bash
+# Docker - Remettre le navire à flot
+docker restart prowlarr
+
+# Systemd - Larguer les amarres
+sudo systemctl restart prowlarr
+```
+
+### Étape 3 — Rejoindre l'équipage
+
+1. 🧭 Naviguez vers **Indexers** → **Add Indexer**
+2. 🔎 Cherchez **"La Cale"**
+3. 🔑 Entrez votre **passkey** (trouvable dans votre profil de marin sur la-cale.space)
+4. ✅ Cliquez **Test** puis **Save**
+
+---
+
+## 📦 Cargaison
+
+<table>
+<tr><th>📚 Bibliothèque du bord</th><th>🎬 Salle de projection</th><th>📺 Quartier des séries</th></tr>
+<tr><td>
+
+| Cale | Butin |
+|:-----|:------|
+| BD | Bandes dessinées |
+| Romans | Livres |
+| Documentaires | Savoirs |
+
+</td><td>
+
+| Cale | Butin |
+|:-----|:------|
+| Films HD | Haute qualité |
+| Films 4K | Ultra HD |
+| Animation | Dessins animés |
+
+</td><td>
+
+| Cale | Butin |
+|:-----|:------|
+| Séries HD | Haute qualité |
+| Séries VOSTFR | Sous-titrées |
+
+</td></tr>
+</table>
+
+<table>
+<tr><th>🎵 Taverne musicale</th><th>🎮 Salle de jeux</th><th>💻 Arsenal logiciel</th></tr>
+<tr><td>
+
+| Cale | Butin |
+|:-----|:------|
+| FLAC | Sans perte |
+| MP3 | Compressé |
+
+</td><td>
+
+| Cale | Butin |
+|:-----|:------|
+| PC | Jeux PC |
+| Consoles | Consoles |
+
+</td><td>
+
+| Cale | Butin |
+|:-----|:------|
+| Linux | Pingouin |
+| Mac | Pomme |
+| Windows | Fenêtres |
+
+</td></tr>
+</table>
+
+<table>
+<tr><th>🔞 Quartier interdit</th></tr>
+<tr><td>
+
+| Cale | Butin |
+|:-----|:------|
+| XXX | Réservé aux adultes |
+
+</td></tr>
+</table>
+
+---
+
+## ⚙️ Ordres du Capitaine
+
+| Paramètre | Description |
+|:----------|:------------|
+| 🔑 **Passkey** | Votre laissez-passer personnel délivré par le capitaine |
+
+### 📜 Code des Pirates
+
+> *"Tout marin qui ne respecte pas le code sera jeté par-dessus bord !"*
+
+| Règle | Sentence |
+|:------|:---------|
+| ⚖️ Ratio minimum | `1.0` — Donnez autant que vous prenez ! |
+| ⏱️ Temps de seed minimum | `48 heures` — Ne quittez pas le navire trop tôt ! |
+
+---
+
+## 🌊 En cas de tempête
+
+<details>
+<summary><strong>❌ Le navire refuse de répondre</strong></summary>
+
+```
+    ⛈️ TEMPÊTE DÉTECTÉE ⛈️
+```
+
+- 🔑 Vérifiez que votre passkey est correcte
+- 👤 Assurez-vous que votre compte est actif sur la-cale.space
+- 🌐 Vérifiez que le navire est accessible (le site n'est pas en maintenance)
+
+</details>
+
+<details>
+<summary><strong>🔍 La cale semble vide</strong></summary>
+
+```
+    🏝️ TERRE EN VUE... MAIS RIEN À L'HORIZON
+```
+
+- 📝 Essayez une recherche plus large
+- 📦 Vérifiez que la cargaison existe dans cette catégorie
+- 🎫 Vérifiez vos droits d'accès aux différentes cales
+
+</details>
+
+---
+
+## 🤝 Rejoindre l'équipage
+
+Tout marin volontaire est le bienvenu ! Vous pouvez :
+
+- 🐛 [Signaler une avarie](../../issues)
+- 💡 [Proposer des améliorations](../../issues)
+- 🔧 [Soumettre des réparations](../../pulls)
+
+---
+
+## ⚠️ Avertissement du Capitaine
+
+> *"Ce navire est fourni tel quel pour un usage personnel. Assurez-vous de respecter le code des pirates de La Cale. Tout contrevenant sera abandonné sur une île déserte."*
+
+---
+
+## 📜 Licence
+
+MIT License — Libre comme l'océan !
+
+---
+
+<p align="center">
+  <sub>
+    ⚓ Forgé avec ❤️ pour les flibustiers francophones ⚓
+  </sub>
+</p>
+
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:1a1a2e,100:16213e&height=100&section=footer" width="100%"/>
+</p>
