@@ -1,0 +1,128 @@
+id: lacale-api-cookie
+name: La Cale (Cookie)
+description: Indexeur privé – API officielle La Cale
+language: fr-FR
+type: private
+encoding: UTF-8
+links:
+  - https://la-cale.space
+
+
+caps:
+  categorymappings:
+    - { id: films, cat: Movies, desc: Films }
+    - { id: series, cat: TV, desc: Séries TV }
+    - { id: video, cat: Movies/Other, desc: Vidéo }
+    - { id: musique, cat: Audio, desc: Musique }
+    - { id: ebooks, cat: Books, desc: Livres }
+    - { id: romans, cat: Books, desc: Romans }
+    - { id: bd, cat: Books/Comics, desc: BD }
+
+
+  modes:
+    search: [q]
+    tv-search: [q]
+    movie-search: [q]
+    music-search: [q]
+    book-search: [q]
+
+settings:
+  - name: cookie
+    type: text
+    label: Cookie
+  - name: info_cookie
+    type: info_cookie
+  - name: passkey
+    type: password
+    label: Passkey
+    help: Clé personnelle requise pour accéder à l’API La Cale
+  - name: info_passkey
+    type: info
+    label: Où trouver votre passkey
+    default: >
+      Toutes les requêtes nécessitent une passkey valide.
+      Vous pouvez la trouver sur votre
+      <a href="https://la-cale.space/profile" target="_blank">page profil La Cale</a>.
+      Ne la partagez jamais.
+
+login:
+  method: cookie
+  inputs:
+    cookie: "{{ .Config.cookie }}"
+  test:
+    path: dashboard
+    selector: button[aria-haspopup="menu"]
+
+search:
+  paths:
+    - path: api/external
+      response:
+        type: json
+
+
+  inputs:
+    passkey: "{{ .Config.passkey }}"
+    q: "{{ .Keywords }}"
+
+
+  keywordsfilters:
+    - name: trim
+    - name: re_replace
+      args: ["[\\\\\\-\\.\\/!\\s]+", " "]
+
+
+  rows:
+    selector: $
+    missingAttributeEqualsNoResults: true
+
+
+  fields:
+    title:
+      selector: title
+    guid:
+      selector: guid
+    details:
+      selector: link
+    download:
+      selector: infoHash
+      filters:
+        - name: prepend
+          args: "https://la-cale.space/api/torrents/download/"
+        - name: append
+          args: "?passkey={{ .Config.passkey }}"
+    category:
+      selector: category
+      filters:
+        - name: re_replace
+          args: ["(?i)^s[ée]ries.*", "series"]
+        - name: re_replace
+          args: ["(?i)^films.*", "films"]
+        - name: re_replace
+          args: ["(?i)^vid[ée]o.*", "video"]
+        - name: re_replace
+          args: ["(?i)^musique.*", "musique"]
+        - name: re_replace
+          args: ["(?i)^livres.*", "ebooks"]
+        - name: re_replace
+          args: ["(?i)^romans.*", "romans"]
+        - name: re_replace
+          args: ["(?i)^bd.*", "bd"]
+        - name: re_replace
+          args: ["(?i)^bande.?dessin[ée]e.*", "bd"]
+    size:
+      selector: size
+    seeders:
+      selector: seeders
+    leechers:
+      selector: leechers
+    date:
+      selector: pubDate
+      filters:
+        - name: dateparse
+          args: "2006-01-02T15:04:05.000Z"
+    infohash:
+      selector: infoHash
+    downloadvolumefactor:
+      text: 1
+    uploadvolumefactor:
+      text: 1
